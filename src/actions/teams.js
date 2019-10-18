@@ -2,7 +2,7 @@ import request from 'superagent'
 
 export const TEAMS_FETCHED = 'TEAMS_FETCHED'
 
-const baseUrl = 'http://localhost:4000'
+const baseUrl = 'http://localhost:5000'
 
 const teamsFetched = teams => ({
   type: TEAMS_FETCHED,
@@ -42,15 +42,15 @@ export const createTeam = (data) => dispatch => {
 export const FETCH_TEAM_SUCCESS = 'FETCH_TEAM_SUCCESS'
 
 const fetchTeamSuccess = team => ({
-    type: FETCH_TEAM_SUCCESS,
-    payload: team
+  type: FETCH_TEAM_SUCCESS,
+  payload: team
 })
 
 export const loadTeam = (id) => (dispatch, getState) => {
-    console.log('CAN WE GET THE STATE??', getState())
-    request(`${baseUrl}/teams/${id}`)
-        .then(response => {
-            console.log(response)
-            dispatch(fetchTeamSuccess(response.body))
-        })
+  console.log('CAN WE GET THE STATE??', getState())
+  request(`${baseUrl}/teams/${id}`)
+    .then(response => {
+      console.log(response)
+      dispatch(fetchTeamSuccess(response.body))
+    })
 }
